@@ -118,7 +118,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 4px;
+  border-radius: 0.106667rem;
   border: 0;
   box-sizing: border-box;
   color: inherit;
@@ -579,7 +579,7 @@
 }
 
 .mint-badge.is-size-large {
-  border-radius: 14px;
+  border-radius: 0.373333rem;
   font-size: 18px;
   padding: 0.053333rem 0.266667rem;
 }
@@ -597,7 +597,7 @@
 }
 
 .mint-badge.is-size-small {
-  border-radius: 8px;
+  border-radius: 0.213333rem;
   font-size: 12px;
   padding: 0.053333rem 0.16rem;
 }
@@ -615,7 +615,7 @@
 }
 
 .mint-badge.is-size-normal {
-  border-radius: 12px;
+  border-radius: 0.32rem;
   font-size: 15px;
   padding: 0.053333rem 0.213333rem;
 }
@@ -693,7 +693,7 @@
   width: 1.386667rem;
   height: 0.853333rem;
   border: 1px solid #d9d9d9;
-  border-radius: 16px;
+  border-radius: 0.426667rem;
   box-sizing: border-box;
   background: #d9d9d9;
 }
@@ -708,7 +708,7 @@
   transition: -webkit-transform .3s;
   transition: transform .3s;
   transition: transform .3s, -webkit-transform .3s;
-  border-radius: 15px;
+  border-radius: 0.4rem;
 }
 
 .mint-switch-core::after {
@@ -1133,7 +1133,7 @@
 }
 
 .mint-navbar .mint-tab-item.is-selected {
-  border-bottom: 3px solid #26a2ff;
+  border-bottom: 0.08rem solid #26a2ff;
   color: #26a2ff;
   margin-bottom: -0.08rem;
 }
@@ -1234,7 +1234,7 @@
   -ms-flex-align: center;
   align-items: center;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 0.053333rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1551,7 +1551,7 @@
 }
 
 .mint-actionsheet-listitem {
-  border-bottom: solid 1px #e0e0e0;
+  border-bottom: solid 0.026667rem #e0e0e0;
 }
 
 .mint-actionsheet-listitem,
@@ -2045,7 +2045,7 @@
 }.mint-toast {
   position: fixed;
   max-width: 80%;
-  border-radius: 5px;
+  border-radius: 0.133333rem;
   background: rgba(0, 0, 0, 0.7);
   color: #fff;
   box-sizing: border-box;
@@ -2126,7 +2126,7 @@
   position: fixed;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  border-radius: 5px;
+  border-radius: 0.133333rem;
   background: rgba(0, 0, 0, 0.7);
   color: white;
   box-sizing: border-box;
@@ -2179,7 +2179,7 @@
   transform: translate3d(-50%, -50%, 0);
   background-color: #fff;
   width: 85%;
-  border-radius: 3px;
+  border-radius: 0.08rem;
   font-size: 16px;
   -webkit-user-select: none;
   overflow: hidden;
@@ -2207,7 +2207,7 @@
 
 .mint-msgbox-content {
   padding: 0.266667rem 0.533333rem 0.4rem;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 0.026667rem solid #ddd;
   min-height: 0.96rem;
   position: relative;
 }
@@ -2218,7 +2218,7 @@
 
 .mint-msgbox-input input {
   border: 1px solid #dedede;
-  border-radius: 5px;
+  border-radius: 0.133333rem;
   padding: 0.106667rem 0.133333rem;
   width: 100%;
   -webkit-appearance: none;
@@ -2311,7 +2311,7 @@
 
 .mint-msgbox-cancel {
   width: 50%;
-  border-right: 1px solid #ddd;
+  border-right: 0.026667rem solid #ddd;
 }
 
 .mint-msgbox-cancel:active {
@@ -2408,7 +2408,7 @@
 }
 
 .mint-datetime .picker-toolbar {
-  border-bottom: solid 1px #eaeaea;
+  border-bottom: solid 0.026667rem #eaeaea;
 }
 
 .mint-datetime-action {
@@ -2475,7 +2475,7 @@
   right: 0;
   margin: 0;
   background-color: #fff;
-  border-left: solid 1px #ddd;
+  border-left: solid 0.026667rem #ddd;
   text-align: center;
   max-height: 100%;
   display: -webkit-box;
@@ -2537,7 +2537,7 @@
   text-align: center;
   line-height: 1.333333rem;
   background-color: rgba(0, 0, 0, .7);
-  border-radius: 5px;
+  border-radius: 0.133333rem;
   color: #fff;
   font-size: 22px;
 }

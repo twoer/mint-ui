@@ -16,7 +16,7 @@ var px2remConfig = {
     })
   },
   shouldIgnoreRule: function(rule) {
-    return  /border/.test(rule.property);
+    return  /border$/.test(rule.property);
   }
 }
 
