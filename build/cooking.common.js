@@ -5,7 +5,7 @@ var cssLoader = require('./css-loader');
 
 var px2remConfig = {
   baseDpr: 1,             // base device pixel ratio (default: 2)
-  remUnit: 75,            // rem unit value (default: 75)
+  remUnit: 37.5,            // rem unit value (default: 75)
   remPrecision: 6,        // rem value precision (default: 6)
   forcePxComment: 'px',   // force px comment (default: `px`)
   keepComment: 'no',       // no transform value comment (default: `no`)
@@ -53,16 +53,6 @@ cooking.add('loader.vue', {
 
 // add extension
 cooking.config.resolve.extensions.push('.vue')
-
-var plugins = cooking.config.postcss
-
-if (Array.isArray(plugins)) {
-  cooking.config.vue.postcss = function (webpack) {
-    return plugins.map(plugin => isFunction(plugin) ? plugin(webpack) : plugin)
-  }
-} else if (plugins) {
-  cooking.config.vue.postcss = plugins
-}
 
 cooking.config.vue.autoprefixer = true;
 
