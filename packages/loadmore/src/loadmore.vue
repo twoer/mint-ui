@@ -290,9 +290,9 @@
           event.preventDefault();
           event.stopPropagation();
           if (this.maxDistance > 0) {
-            this.translate = flexible.px2rem( distance <= this.maxDistance ? distance - this.startScrollTop : this.translate);
+            this.translate = flexible.px2rem(distance <= this.maxDistance ? distance - this.startScrollTop : this.translate);
           } else {
-            this.translate = flexible.px2rem( distance - this.startScrollTop );
+            this.translate = flexible.px2rem(distance - this.startScrollTop);
           }
           if (this.translate < 0) {
             this.translate = 0;
@@ -308,10 +308,10 @@
           event.preventDefault();
           event.stopPropagation();
           if (this.maxDistance > 0) {
-            this.translate = flexible.px2rem( Math.abs(distance) <= this.maxDistance
-              ? this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance : this.translate );
+            this.translate = flexible.px2rem(Math.abs(distance) <= this.maxDistance
+              ? this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance : this.translate);
           } else {
-            this.translate = flexible.px2rem( this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance );
+            this.translate = flexible.px2rem(this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance);
           }
           if (this.translate > 0) {
             this.translate = 0;
@@ -325,7 +325,7 @@
         if (this.direction === 'down' && this.getScrollTop(this.scrollEventTarget) === 0 && this.translate > 0) {
           this.topDropped = true;
           if (this.topStatus === 'drop') {
-            this.translate = flexible.px2rem( 50 );
+            this.translate = flexible.px2rem(50);
             this.topStatus = 'loading';
             this.topMethod();
           } else {
@@ -337,7 +337,7 @@
           this.bottomDropped = true;
           this.bottomReached = false;
           if (this.bottomStatus === 'drop') {
-            this.translate = flexible.px2rem( -50 );
+            this.translate = flexible.px2rem(-50);
             this.bottomStatus = 'loading';
             this.bottomMethod();
           } else {

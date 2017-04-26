@@ -6,7 +6,8 @@
     "component",
     "vue",
     "mobile",
-    "eleme"
+    "eleme",
+    "mint-ui px2rem"
   ],
   "main": "lib/mint-ui.common.js",
   "style": "lib/style.css",
