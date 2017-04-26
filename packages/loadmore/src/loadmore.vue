@@ -1,6 +1,6 @@
 <template>
   <div class="mint-loadmore">
-    <div class="mint-loadmore-content" :class="{ 'is-dropped': topDropped || bottomDropped}" :style="{ 'transform': 'translate3d(0, ' + translate + 'px, 0)' }">
+    <div class="mint-loadmore-content" :class="{ 'is-dropped': topDropped || bottomDropped}" :style="{ 'transform': 'translate3d(0, ' + translate + 'rem, 0)' }">
       <slot name="top">
         <div class="mint-loadmore-top" v-if="topMethod">
           <spinner v-if="topStatus === 'loading'" class="mint-loadmore-spinner" :size="20" type="fading-circle"></spinner>
@@ -57,6 +57,7 @@
 </style>
 
 <script type="text/babel">
+  import * as flexible from 'src/utils/flexible-lib';
   import spinner from 'mint-ui/packages/spinner/src/spinner/fading-circle.vue';
   export default {
     name: 'mt-loadmore',
@@ -91,7 +92,7 @@
       },
       topDistance: {
         type: Number,
-        default: 70
+        default: flexible.px2rem(70)
       },
       topMethod: {
         type: Function
@@ -110,7 +111,7 @@
       },
       bottomDistance: {
         type: Number,
-        default: 70
+        default: flexible.px2rem(70)
       },
       bottomMethod: {
         type: Function
@@ -289,9 +290,9 @@
           event.preventDefault();
           event.stopPropagation();
           if (this.maxDistance > 0) {
-            this.translate = distance <= this.maxDistance ? distance - this.startScrollTop : this.translate;
+            this.translate = flexible.px2rem( distance <= this.maxDistance ? distance - this.startScrollTop : this.translate);
           } else {
-            this.translate = distance - this.startScrollTop;
+            this.translate = flexible.px2rem( distance - this.startScrollTop );
           }
           if (this.translate < 0) {
             this.translate = 0;
@@ -307,10 +308,10 @@
           event.preventDefault();
           event.stopPropagation();
           if (this.maxDistance > 0) {
-            this.translate = Math.abs(distance) <= this.maxDistance
-              ? this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance : this.translate;
+            this.translate = flexible.px2rem( Math.abs(distance) <= this.maxDistance
+              ? this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance : this.translate );
           } else {
-            this.translate = this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance;
+            this.translate = flexible.px2rem( this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance );
           }
           if (this.translate > 0) {
             this.translate = 0;
@@ -324,7 +325,7 @@
         if (this.direction === 'down' && this.getScrollTop(this.scrollEventTarget) === 0 && this.translate > 0) {
           this.topDropped = true;
           if (this.topStatus === 'drop') {
-            this.translate = '50';
+            this.translate = flexible.px2rem( 50 );
             this.topStatus = 'loading';
             this.topMethod();
           } else {
@@ -336,7 +337,7 @@
           this.bottomDropped = true;
           this.bottomReached = false;
           if (this.bottomStatus === 'drop') {
-            this.translate = '-50';
+            this.translate = flexible.px2rem( -50 );
             this.bottomStatus = 'loading';
             this.bottomMethod();
           } else {
