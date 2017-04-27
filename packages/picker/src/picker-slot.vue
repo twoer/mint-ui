@@ -1,7 +1,7 @@
 <template>
   <div class="picker-slot" :class="classNames" :style="flexStyle">
-    <div v-if="!divider" ref="wrapper" class="picker-slot-wrapper" :class="{ dragging: dragging }" :style="{ height: contentHeight + 'px' }">
-      <div class="picker-item" v-for="itemValue in mutatingValues" :class="{ 'picker-selected': itemValue === currentValue }" :style="{ height: itemHeight + 'px', lineHeight: itemHeight + 'px' }">
+    <div v-if="!divider" ref="wrapper" class="picker-slot-wrapper" :class="{ dragging: dragging }" :style="{ height: contentHeight + 'rem' }">
+      <div class="picker-item" v-for="itemValue in mutatingValues" :class="{ 'picker-selected': itemValue === currentValue }" :style="{ height: itemHeight + 'rem', lineHeight: itemHeight + 'rem' }">
         {{ typeof itemValue === 'object' && itemValue[valueKey] ? itemValue[valueKey] : itemValue }}
       </div>
     </div>
@@ -99,6 +99,7 @@
 </style>
 
 <script type="text/babel">
+  import * as flexible from 'src/utils/flexible-lib';
   import draggable from './draggable';
   import translateUtil from './translate';
   import { once, addClass, removeClass } from 'mint-ui/src/utils/dom';
@@ -115,7 +116,7 @@
     element.style[transformProperty] = element.style[transformProperty].replace(/rotateX\(.+?deg\)/gi, '') + ` rotateX(${angle}deg)`;
   };
 
-  const ITEM_HEIGHT = 36;
+  const ITEM_HEIGHT = flexible.px2rem(36);
   const VISIBLE_ITEMS_ANGLE_MAP = {
     3: -45,
     5: -20,
@@ -206,7 +207,7 @@
         return resultArray.join(' ');
       },
       contentHeight() {
-        return this.itemHeight * this.visibleItemCount;
+        return  this.itemHeight * this.visibleItemCount;
       },
       valueIndex() {
         return this.mutatingValues.indexOf(this.currentValue);
@@ -236,6 +237,7 @@
         var itemHeight = this.itemHeight;
         translate = Math.round(translate / itemHeight) * itemHeight;
         var index = -(translate - Math.floor(this.visibleItemCount / 2) * itemHeight) / itemHeight;
+        index = Math.round(index);
 
         return this.mutatingValues[index];
       },
@@ -254,7 +256,7 @@
         }
 
         var itemsFit = Math.ceil(this.visibleItemCount / 2);
-        var angleUnit = VISIBLE_ITEMS_ANGLE_MAP[this.visibleItemCount] || -20;
+        var angleUnit = flexible.px2remJS(VISIBLE_ITEMS_ANGLE_MAP[this.visibleItemCount] || -20);
 
         [].forEach.call(pickerItems, (item, index) => {
           var itemOffsetTop = index * this.itemHeight;
@@ -263,6 +265,7 @@
           var percentage = itemOffset / this.itemHeight;
 
           var angle = angleUnit * percentage;
+          debugger;
           if (angle > 180) angle = 180;
           if (angle < -180) angle = -180;
 
@@ -337,6 +340,7 @@
               var momentumRatio = 7;
               var currentTranslate = translateUtil.getElementTranslate(el).top;
               var duration = new Date() - dragState.start;
+              console.log(currentTranslate)
 
               var momentumTranslate;
               if (duration < 300) {
@@ -349,14 +353,18 @@
                 var translate;
                 var itemHeight = this.itemHeight;
                 if (momentumTranslate) {
+                  momentumTranslate = flexible.px2remJS(momentumTranslate);
                   translate = Math.round(momentumTranslate / itemHeight) * itemHeight;
                 } else {
+                  currentTranslate = flexible.px2remJS(currentTranslate);
+                  console.log(currentTranslate)
                   translate = Math.round(currentTranslate / itemHeight) * itemHeight;
                 }
 
                 translate = Math.max(Math.min(translate, dragRange[1]), dragRange[0]);
 
-                translateUtil.translateElement(el, null, translate);
+                translateUtil.translateElement(el, null, flexible.rem2pxJS(translate));
+                
 
                 this.currentValue = this.translate2Value(translate);
 
@@ -374,15 +382,15 @@
       doOnValueChange() {
         var value = this.currentValue;
         var wrapper = this.$refs.wrapper;
-
-        translateUtil.translateElement(wrapper, null, this.value2Translate(value));
+        
+        translateUtil.translateElement(wrapper, null, flexible.rem2pxJS(this.value2Translate(value)));
       },
 
       doOnValuesChange() {
         var el = this.$el;
         var items = el.querySelectorAll('.picker-item');
         [].forEach.call(items, (item, index) => {
-          translateUtil.translateElement(item, null, this.itemHeight * index);
+          translateUtil.translateElement(item, null, flexible.rem2pxJS(this.itemHeight * index));
         });
         if (this.rotateEffect) {
           this.planUpdateRotate();
