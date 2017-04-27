@@ -9,7 +9,6 @@ export function px2rem(d) {
   return val;
 }
 
-
 export function rem2px(d) {
   var dpr = document.documentElement.getAttribute('data-dpr') || 0;
   var val = Math.round(parseFloat(d) * remUnit * dpr);
@@ -19,7 +18,6 @@ export function rem2px(d) {
   return val;
 }
 
-
 export function px2remJS(d) {
   var val = parseFloat(d) / remUnitJS;
   if (typeof d === 'string' && d.match(/px$/)) {
@@ -28,9 +26,8 @@ export function px2remJS(d) {
   return val;
 }
 
-
 export function rem2pxJS(d) {
-  var dpr = document.documentElement.getAttribute('data-dpr') || 0;
+  // var dpr = document.documentElement.getAttribute('data-dpr') || 0;
   var val = Math.round(parseFloat(d) * remUnitJS);
   if (typeof d === 'string' && d.match(/px$/)) {
     val += 'px';

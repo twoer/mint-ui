@@ -207,7 +207,7 @@
         return resultArray.join(' ');
       },
       contentHeight() {
-        return  this.itemHeight * this.visibleItemCount;
+        return this.itemHeight * this.visibleItemCount;
       },
       valueIndex() {
         return this.mutatingValues.indexOf(this.currentValue);
@@ -265,7 +265,6 @@
           var percentage = itemOffset / this.itemHeight;
 
           var angle = angleUnit * percentage;
-          debugger;
           if (angle > 180) angle = 180;
           if (angle < -180) angle = -180;
 
@@ -340,8 +339,6 @@
               var momentumRatio = 7;
               var currentTranslate = translateUtil.getElementTranslate(el).top;
               var duration = new Date() - dragState.start;
-              console.log(currentTranslate)
-
               var momentumTranslate;
               if (duration < 300) {
                 momentumTranslate = currentTranslate + velocityTranslate * momentumRatio;
@@ -357,14 +354,12 @@
                   translate = Math.round(momentumTranslate / itemHeight) * itemHeight;
                 } else {
                   currentTranslate = flexible.px2remJS(currentTranslate);
-                  console.log(currentTranslate)
                   translate = Math.round(currentTranslate / itemHeight) * itemHeight;
                 }
 
                 translate = Math.max(Math.min(translate, dragRange[1]), dragRange[0]);
 
                 translateUtil.translateElement(el, null, flexible.rem2pxJS(translate));
-                
 
                 this.currentValue = this.translate2Value(translate);
 
@@ -382,7 +377,7 @@
       doOnValueChange() {
         var value = this.currentValue;
         var wrapper = this.$refs.wrapper;
-        
+
         translateUtil.translateElement(wrapper, null, flexible.rem2pxJS(this.value2Translate(value)));
       },
 
