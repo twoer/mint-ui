@@ -2,7 +2,7 @@
   <div class="page-button">
     <h1 class="page-title">Button</h1>
     <div class="page-button-group">
-      <mt-button size="large">default</mt-button>
+      <mt-button size="large" @click="test()">default</mt-button>
       <mt-button size="large" type="primary">primary</mt-button>
       <mt-button size="large" type="danger">danger</mt-button>
     </div>
@@ -42,7 +42,12 @@
 
 <script>
 export default {
-  name: 'button'
+  name: 'button',
+  methods:{
+    test(){
+      console.log('click default...'+ new Date());
+    }
+  }
 };
 </script>
 

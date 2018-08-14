@@ -19,7 +19,7 @@
 
 <script>
 if (process.env.NODE_ENV === 'component') {
-  require('mint-ui/packages/font/style.css');
+  require('../../../font/style.css');
 }
 
 /**
@@ -34,19 +34,32 @@ if (process.env.NODE_ENV === 'component') {
  * @param {string} [icon] - 图标，提供 more, back，或者自定义的图标（传入不带前缀的图标类名，最后拼接成 .mintui-xxx）
  * @param {slot} - 显示文本
  * @param {slot} [icon] 显示图标
+ * @param {delay} [delay] 点击延迟时间
  *
  * @example
  * <mt-button size="large" icon="back" type="primary">按钮</mt-button>
  */
 export default {
   name: 'mt-button',
-
+  data() {
+    return {
+      timer: null
+    };
+  },
   methods: {
     handleClick(evt) {
+      if (this.delay < 10) {
+        this.$emit('click', evt);
+        return;
+      }
+      let _now = +new Date();
+      if (this.timer && _now - this.timer < this.delay) {
+        return;
+      }
       this.$emit('click', evt);
+      this.timer = +new Date();
     }
   },
-
   props: {
     icon: String,
     disabled: Boolean,
@@ -73,6 +86,10 @@ export default {
           'large'
         ].indexOf(value) > -1;
       }
+    },
+    delay: {
+      type: Number,
+      default: 1500
     }
   }
 };

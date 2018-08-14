@@ -1,26 +1,4 @@
-# Mint UI 适配 REM、DPR
-
-### 适配方案
-* 前端页面适配基于淘宝移动端自适应方案 [lib-flexible](https://github.com/amfe/lib-flexible)
-* Mint UI 的 px2rem(包含字体 dpr 适配）基于 [postcss-px2rem-dpr](https://www.npmjs.com/package/postcss-px2rem-dpr)
-
-### 修改内容
-* mint-ui 内容没有做任何更改
-* 仅修改了 build 中的 cooking.demo.js、cooking.common.js cooking.component.js 三个 build 配置文件
-* 大家可以根据自身需求调整 这三个文件中的 `px2remConfig` 配置项
-
-### 遇到的坑
-虽然最终修改的内容很少且不影响 mint-ui 后期更新，但是在整个过程中遇到了不少问题，  
-比如最开始考虑过手动修改 vue 组件里面的 px 和 font，这种方案工作量大且不利于后续更新， 
-
-#### 后来开始研究 mint-ui 项目，发现如下问题：  
-* 这个不是一个标准的 webpack 项目，  这是基于 饿了么自己开发的 cooking 脚手架，该脚手架封装了 webpack；
-* 这个项目的 css 使用的是 saladcss，也许你第一次听说，其实这个 saladcss 也是 饿了么自己开发的，但基于的是 postcss；
-
-* webpack、postcss 本来都不太熟，何况还都做了二次封装，尝试各种修改，阅读其逻辑，最终实现了最少改动的适配，真心不容易！
-
-### 最后
-* 其实该适配方案也不完全完美，比如 picker 组件里面的 js 代码用了好多固定死的 px 值！！！
+# Mint UI 轻量版本
 
 
 

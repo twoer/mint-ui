@@ -1,13 +1,9 @@
 {
-  "name": "mint-ui-rem-dpr",
-  "version": "2.2.7",
+  "name": "mint-ui-ahrcu",
+  "version": "2.2.91",
   "description": "Mobile UI elements for vue.js",
   "keywords": [
-    "component",
-    "vue",
-    "mobile",
-    "eleme",
-    "mint-ui px2rem"
+    "component"
   ],
   "main": "lib/mint-ui.common.js",
   "style": "lib/style.css",
@@ -31,11 +27,11 @@
     "type": "git",
     "url": "git+https://github.com/twoer/mint-ui-rem-dpr.git"
   },
-  "homepage": "https://github.com/twoer/mint-ui-rem-dpr#readme",
+  "homepage": "https://github.com/twoer/mint-ui-rem-dpr/tree/ahrcu",
   "bugs": {
-    "url": "https://github.com/twoer/mint-ui-rem-dpr/issues"
+    "url": "https://github.com/twoer/mint-ui-rem-dpr/tree/ahrcu/issues"
   },
-  "author": "elemefe",
+  "author": "zhangkun",
   "license": "MIT",
   "dependencies": {
     "array-find-index": "^1.0.2",

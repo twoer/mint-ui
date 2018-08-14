@@ -41,9 +41,9 @@ cooking.set({
 cooking.remove('output.publicPath');
 cooking.add('output.filename', '[name]/index.js');
 cooking.add('loader.js.exclude', config.jsexclude);
-cooking.add('plugins.Define', new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify('component')
-}));
+// cooking.add('plugins.Define', new webpack.DefinePlugin({
+//   'process.env.NODE_ENV': JSON.stringify('component')
+// }));
 
 
 var SOURCE_MAP = cooking.config.devtool
